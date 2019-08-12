@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://puctcc.herokuapp.com/'),
+    'url' => env('APP_URL', 'https://puctcc.herokuapp.com/'),
 
     'asset_url' => env('ASSET_URL', null),
 
