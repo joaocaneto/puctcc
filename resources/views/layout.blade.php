@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
     <link rel="stylesheet" href="{{ url('fontawesome-free-5.9.0-web/css/all.css') }}">
-    <script type="text/javascript" src="{{ url('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ url('js/app.js') }}" defer></script>
 
     <title>MultiTools - Loja Virtual de Ferramentas</title>
 
