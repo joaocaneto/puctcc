@@ -10,7 +10,6 @@ class HttpsProtocol
 
     public function handle($request, Closure $next)
     {
-
         return redirect()->secure($request->getRequestUri());
     }
 }
