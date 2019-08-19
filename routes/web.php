@@ -18,6 +18,7 @@ Route::get('/', function () {
 */
 
 Auth::routes();
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/categoria/{categoria}', 'HomeController@index');
@@ -36,3 +37,5 @@ Route::post('/fornecedores/create', 'FornecedoresController@store');
 Route::get('/produtos/{idProduto}', 'ProdutosController@show')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/produtos/{idProduto}/atualizarImagem', 'ProdutosController@atualizarImagem');

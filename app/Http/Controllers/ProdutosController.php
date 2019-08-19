@@ -35,5 +35,11 @@ class ProdutosController extends Controller
         return view('produtos.show', compact('produtos'));
     }
 
-
+    public function atualizarImagem(Request $request)
+    {
+        $fileName = 'produto' . $request->idProduto . '.png';
+        $path = $request->file('imageProduto')->move('./images/produtos', $fileName);
+        $imageURL = url($fileName);
+        return response()->json(['url' => $imageURL], 200);
+    }
 }
