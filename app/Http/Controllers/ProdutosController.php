@@ -37,7 +37,7 @@ class ProdutosController extends Controller
 
     public function atualizarImagem(Request $request)
     {
-        $fileName = 'produto' . $request->idProduto . '.png';
+        $fileName = 'produto' . $request->idProduto . '.jpg';
         $path = $request->file('imageProduto')->move('./images/produtos', $fileName);
         $imageURL = url($fileName);
         return response()->json(['url' => $imageURL], 200);
