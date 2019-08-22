@@ -32,9 +32,9 @@ Route::get('/fornecedores/unlock/{idFornecedor}', 'FornecedoresController@unlock
 Route::get('/fornecedores/remover/{idFornecedor}', 'FornecedoresController@remover')->middleware('auth');
 
 Route::get('/fornecedores/create', 'FornecedoresController@create');
-Route::post('/fornecedores/create', 'FornecedoresController@store');
+Route::post('/fornecedores/create', 'FornecedoresController@store')->name('fornecedores.create');;
 
-Route::get('/produtos/{idProduto}', 'ProdutosController@show')->middleware('auth');
+Route::get('/produtos/{idProduto}', 'ProdutosController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

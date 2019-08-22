@@ -14,25 +14,34 @@ namespace App\Http\Controllers;
  * @author joaoc
  */
 
+use App\Models\Fornecedor;
 use App\Models\Produto;
+use App\Models\ProdutoFornecedor;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
 {
-    // public function index()
-    // {
-    //     $produtos = Produto::all;
-
-    //     //return view('produtos.index', compact('produtos'));
-    //     return view('produtos.index', [
-    //         'produtos' => $produtos
-    //     ]);
-    // }
-
     public function show(Request $request)
     {
         $produtos = Produto::query()->where('idProduto', '=', $request->idProduto)->get();
-        return view('produtos.show', compact('produtos'));
+        $produtosFornecedores = ProdutoFornecedor::query()->where([
+            ['p_idProduto', '=', $request->idProduto],
+            ['quantidade', '>', 0]
+        ])->get();
+        $fornecedores = [];
+
+        foreach ($produtosFornecedores as $key => $value) {
+            $objProdutoFornecedor = Fornecedor::query()->where('idFornecedor', '=', $value->f_idFornecedor)->first();
+
+            if (!empty($objProdutoFornecedor)) {
+                $fornecedores[$key] = [
+                    'idFornecedor' => $objProdutoFornecedor->idFornecedor,
+                    'nomeFornecedor' => $objProdutoFornecedor->nomeFornecedor
+                ];
+            }
+        }
+
+        return view('produtos.show', ['produtos' => $produtos, 'fornecedores' => $fornecedores]);
     }
 
     public function atualizarImagem(Request $request)

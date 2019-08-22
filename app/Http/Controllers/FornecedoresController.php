@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fornecedor;
 use App\Mail\SendMail;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class FornecedoresController extends Controller
@@ -82,6 +83,7 @@ class FornecedoresController extends Controller
                 'nomeFornecedor' => $request->nomeFornecedor,
                 'descFornecedor' => $request->descFornecedor,
                 'emailFornecedor' => $request->emailFornecedor,
+                'password' => Hash::make($request->password),
                 'situacao' => 'L'
             ]
         );
