@@ -82,7 +82,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active fas fa-2x fa-shopping-cart"
-                                href="{{ route('carrinho.index') }}"></a>
+                                href="{{ route('carrinho.visualizar') }}"></a>
                         </li>
                         @endguest
                     </ul>

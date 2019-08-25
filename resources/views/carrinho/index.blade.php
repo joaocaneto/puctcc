@@ -6,14 +6,20 @@
 
     <div class="">
         @if(!empty($mensagem))
-        <div class="alert alert-success">{{ $mensagem }}</div>
+        <div class="alert alert-info">{{ $mensagem }}</div>
         @endif
+
+        @if (!empty($pedidosAgrupados))           
+        
+        @php
+        $primeiroGrupo = $pedidosAgrupados->first();    
+        @endphp
 
         <div class="mb-4">
             <div class="mb-4">
                 <h4>Produtos no carrinho</h4>
                 <hr />
-                <h5>Pedido: {{ '000001' }}</h5>
+                <h5>Pedido: {{ str_pad($primeiroGrupo[0]->idPedido, 6 , '0' , STR_PAD_LEFT) }}</h5>
             </div>
 
             @php
@@ -33,9 +39,9 @@
                 @endphp
                 @foreach ($grupoPedidos as $pedido)
 
-                <div class="row mb-4">
-                    <div class="col-md">{{ $pedido->nomeProduto }}</div>
-                    <div class="">R$ {{  number_format($pedido->preco, 2, ',', '.') }}</div>
+            <div class="row mb-4">
+                    <div class="col-md" data-toggle="tooltip" data-placement="top" title="{{ $pedido->nomeFornecedor }}">{{ $pedido->nomeProduto }}</div>
+                    <div class="" data-toggle="tooltip" data-placement="top" title="{{ $pedido->nomeFornecedor }}">R$ {{  number_format($pedido->preco, 2, ',', '.') }}</div>
                     @php
                     $subtotal += $pedido->preco;
                     $total += $subtotal;
@@ -51,27 +57,15 @@
 
             <div class="row mb-4 font-weight-bold">Total do Pedido: R$ {{  number_format($total, 2, ',', '.') }}</div>
 
-        </div>
+        </div>       
         
-        <form id="form-adicionar-produto" method="POST" action="{{ route('carrinho.limpar') }}">
+        <a class="btn btn-success float-right" href="{{ route('carrinho.entrega') }}">Dados de Entrega</a>
 
-            <input type="hidden" name="idPedido" id="idPedido" value="{{ $pedidosAgrupados }}">
-
-            <button class="btn btn-success float-right">Checkout</button>
-
-            @csrf
-        </form>
+        @endif
 
         <a class="btn btn-info float-right mr-3" href="{{ url('/') }}">Continuar comprando</a>
 
-        <form id="form-adicionar-produto" method="POST" action="{{ route('carrinho.limpar') }}">
-
-            <input type="hidden" name="idPedido" id="idPedido" value="{{ $pedidosAgrupados }}">
-
-            <button class="btn btn-secondary float-right mr-3">Limpar carrinho</button>
-
-            @csrf
-        </form>
+        <a class="btn btn-secondary float-right mr-3" href="{{ route('carrinho.limpar') }}">Limpar carrinho</a>
 
     </div>
 </div>

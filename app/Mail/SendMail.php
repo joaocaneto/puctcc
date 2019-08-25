@@ -5,8 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Models\Fornecedor;
 
 class SendMail extends Mailable
 {
@@ -17,10 +15,11 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct($titulo, int $tipo)
+    public function __construct($titulo, int $tipo, array $conteudo = null)
     {
         $this->titulo = $titulo;
         $this->tipo = $tipo;
+        $this->conteudo = $conteudo;
     }
 
     /**
@@ -38,23 +37,34 @@ class SendMail extends Mailable
                     'texto' => 'Prezado, recebemos seu pedido de registro como Fornecedor da nossa loja virtual. Assim que seu cadastro for aprovado você receberá um e-mail com token para acesso à API de serviços MultiTools.'
                 ])
                 ->markdown('emails.fornecedor-markdown');
-        // E-mail de usuário bloqueado
+            // E-mail de usuário bloqueado
         } elseif ($this->tipo == 2) {
             return $this->subject($this->titulo)
-                ->with(['cabecalho' => 'Usuário bloqueado pelo Administrador.',
-                'texto' => 'Prezado, seu usuário foi bloqueado pelo Administrador do Sistema.'])
+                ->with([
+                    'cabecalho' => 'Usuário bloqueado pelo Administrador.',
+                    'texto' => 'Prezado, seu usuário foi bloqueado pelo Administrador do Sistema.'
+                ])
                 ->markdown('emails.fornecedor-markdown');
-        // E-mail de usuário liberado
+            // E-mail de usuário liberado
         } elseif ($this->tipo == 3) {
             return $this->subject($this->titulo)
-                ->with(['cabecalho' => 'Usuário liberado pelo Administrador.',
-                'texto' => 'Prezado, seu usuário foi liberado pelo Administrador do Sistema.'])
+                ->with([
+                    'cabecalho' => 'Usuário liberado pelo Administrador.',
+                    'texto' => 'Prezado, seu usuário foi liberado pelo Administrador do Sistema.'
+                ])
                 ->markdown('emails.fornecedor-markdown');
-         // E-mail de usuário removido
+            // E-mail de usuário removido
         } elseif ($this->tipo == 4) {
             return $this->subject($this->titulo)
-                ->with(['cabecalho' => 'Usuário removido pelo Administrador.',
-                'texto' => 'Prezado, seu usuário foi removido pelo Administrador do Sistema. Em caso de dúvidas, favor entrar em contato com nossa Central de Atendimento.'])
+                ->with([
+                    'cabecalho' => 'Usuário removido pelo Administrador.',
+                    'texto' => 'Prezado, seu usuário foi removido pelo Administrador do Sistema. Em caso de dúvidas, favor entrar em contato com nossa Central de Atendimento.'
+                ])
+                ->markdown('emails.fornecedor-markdown');
+            // E-mail de compra finalizada
+        } elseif ($this->tipo == 5) {
+            return $this->subject($this->titulo)
+                ->with($this->conteudo)
                 ->markdown('emails.fornecedor-markdown');
         }
     }

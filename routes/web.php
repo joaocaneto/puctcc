@@ -35,9 +35,10 @@ Route::get('/fornecedores/create', 'FornecedoresController@create');
 Route::post('/fornecedores/create', 'FornecedoresController@store');
 
 Route::post('/carrinho/adicionar', 'CarrinhoController@insert')->name('carrinho.adicionar')->middleware('auth');
-Route::get('/carrinho/visualizar', 'CarrinhoController@index')->name('carrinho.index')->middleware('auth');
-Route::get('/carrinho/limpar', 'CarrinhoController@index')->name('carrinho.limpar')->middleware('auth');
-Route::get('/carrinho/checkout', 'CarrinhoController@index')->name('carrinho.checkout')->middleware('auth');
+Route::get('/carrinho/visualizar', 'CarrinhoController@index')->name('carrinho.visualizar')->middleware('auth');
+Route::get('/carrinho/limpar', 'CarrinhoController@clear')->name('carrinho.limpar')->middleware('auth');
+Route::get('/carrinho/entrega', 'CarrinhoController@shipping')->name('carrinho.entrega')->middleware('auth');
+Route::post('/carrinho/finalizar', 'CarrinhoController@checkout')->name('carrinho.finalizar')->middleware('auth');
 
 Route::get('/produtos/{idProduto}', 'ProdutosController@show');
 

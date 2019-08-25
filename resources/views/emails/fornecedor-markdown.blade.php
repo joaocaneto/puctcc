@@ -1,7 +1,7 @@
 @component('mail::message')
 # {{ $cabecalho }}
 
-{{ $texto }}
+{!! $texto !!}
 
 @component('mail::button', ['url' => config('app.url') ])
 Visite nossa página
