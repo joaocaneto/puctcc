@@ -23,6 +23,11 @@
         </div>
     </li>
     @endauth
+    @guest
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">Login</a>
+        </li>    
+    @endguest
     <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
     </li>

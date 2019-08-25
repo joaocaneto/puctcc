@@ -21,29 +21,20 @@
 <body style="padding-top: 56px; background-color: aliceblue;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm fixed-top">
-            <div class="container"><i class="fas fa-2x fa-tools mr-2 text-white"></i>
-                <a class="navbar-brand text-white" href="{{ url('/') }}">
-                    MultiTools
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="container">                
                 <div class="collapse navbar-collapse navbar-dark bg-dark" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto  align-items-center">
                         @guest
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
                         </li>
-                        @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('register') }}">Cadastre-se</a>
-                        </li>
-                        @endif
-                        @else
+                                <a class="nav-link text-white" href="{{ route('register') }}">Cadastre-se</a>
+                            </li>
+                        @endguest
+                        @auth
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -62,6 +53,7 @@
                                 </form>
                             </div>
                         </li>
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
@@ -84,7 +76,7 @@
                             <a class="nav-link active fas fa-2x fa-shopping-cart"
                                 href="{{ route('carrinho.visualizar') }}"></a>
                         </li>
-                        @endguest
+                        
                     </ul>
                 </div>
             </div>
