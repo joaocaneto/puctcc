@@ -41,9 +41,9 @@
         <a class="nav-link" href="#">Contato</a>
     </li>
     <li class="nav-item">
-        <a href="/">
+        <a href="{{ route('carrinho.index')}}">
             <i class="active nav-link fas fa-2x fa-shopping-cart">
-                <span class="h5 align-bottom font-weight-bold">00</span></i>
+                {{-- <span class="h5 align-bottom font-weight-bold"></span></i> --}}
             </i>
         </a>
     </li>

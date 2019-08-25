@@ -32,7 +32,12 @@ Route::get('/fornecedores/unlock/{idFornecedor}', 'FornecedoresController@unlock
 Route::get('/fornecedores/remover/{idFornecedor}', 'FornecedoresController@remover')->middleware('auth');
 
 Route::get('/fornecedores/create', 'FornecedoresController@create');
-Route::post('/fornecedores/create', 'FornecedoresController@store')->name('fornecedores.create');;
+Route::post('/fornecedores/create', 'FornecedoresController@store');
+
+Route::post('/carrinho/adicionar', 'CarrinhoController@insert')->name('carrinho.adicionar')->middleware('auth');
+Route::get('/carrinho/visualizar', 'CarrinhoController@index')->name('carrinho.index')->middleware('auth');
+Route::get('/carrinho/limpar', 'CarrinhoController@index')->name('carrinho.limpar')->middleware('auth');
+Route::get('/carrinho/checkout', 'CarrinhoController@index')->name('carrinho.checkout')->middleware('auth');
 
 Route::get('/produtos/{idProduto}', 'ProdutosController@show');
 

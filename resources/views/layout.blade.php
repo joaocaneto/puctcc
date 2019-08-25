@@ -53,15 +53,15 @@
 
         </div>
 
-    </div>
+    </div>   
+</body>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
+ <!-- Footer -->
+ <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; MultiTools - Loja Virtual de Ferramentas</p>
         </div>
 
     </footer>
-</body>
 
 </html>

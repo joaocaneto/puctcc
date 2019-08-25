@@ -23,12 +23,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class ProdutoFornecedor extends Eloquent
 {
 	protected $table = 'produto_fornecedor';
-	public $incrementing = false;
-	public $timestamps = false;
+	protected $primaryKey = 'idPF';
+	public $timestamps = false;	
 
-	protected $casts = [
-		'produto_idProduto' => 'int',
-		'fornecedor_idFornecedor' => 'int'
+	protected $fillable = [
+		'p_idProduto',
+		'f_idFornecedor',
+		'quantidade'
 	];
 
 	public function fornecedor()
