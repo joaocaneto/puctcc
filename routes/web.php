@@ -27,6 +27,8 @@ Route::get('/produtos', 'ProdutosController@index');
 
 Route::get('/fornecedores', 'FornecedoresController@index')->middleware('auth');
 
+Route::get('/pedidos', 'PedidosController@index')->name('pedidos.listar')->middleware('auth');
+
 Route::get('/fornecedores/lock/{idFornecedor}', 'FornecedoresController@lock')->middleware('auth');
 Route::get('/fornecedores/unlock/{idFornecedor}', 'FornecedoresController@unlock')->middleware('auth');
 Route::get('/fornecedores/remover/{idFornecedor}', 'FornecedoresController@remover')->middleware('auth');

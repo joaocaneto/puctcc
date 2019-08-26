@@ -12,6 +12,8 @@
 
             <a class="dropdown-item" href="/fornecedores">Listar Fornecedores</a>
 
+            <a class="dropdown-item" href="/pedidos">Meus Pedidos</a>
+
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                 Sair
