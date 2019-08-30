@@ -34,7 +34,7 @@ class SendMail extends Mailable
             return $this->subject($this->titulo)
                 ->with([
                     'cabecalho' => 'Usuário cadastrado com sucesso.',
-                    'texto' => 'Prezado, recebemos seu pedido de registro como Fornecedor da nossa loja virtual. Assim que seu cadastro for aprovado você receberá um e-mail com token para acesso à API de serviços MultiTools.'
+                    'texto' => 'Prezado, recebemos seu pedido de registro como Fornecedor da nossa loja virtual. Assim que seu cadastro for aprovado você receberá um e-mail para acesso à API de serviços MultiTools.'
                 ])
                 ->markdown('emails.fornecedor-markdown');
             // E-mail de usuário bloqueado

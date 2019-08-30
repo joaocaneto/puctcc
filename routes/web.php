@@ -21,9 +21,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/categoria/{categoria}', 'HomeController@index');
 
 Route::get('/produtos', 'ProdutosController@index');
+
+Route::get('/produtos/{idProduto}', 'ProdutosController@show');
 
 Route::get('/fornecedores', 'FornecedoresController@index')->middleware('auth');
 
@@ -41,9 +45,5 @@ Route::get('/carrinho/visualizar', 'CarrinhoController@index')->name('carrinho.v
 Route::get('/carrinho/limpar', 'CarrinhoController@clear')->name('carrinho.limpar')->middleware('auth');
 Route::get('/carrinho/entrega', 'CarrinhoController@shipping')->name('carrinho.entrega')->middleware('auth');
 Route::post('/carrinho/finalizar', 'CarrinhoController@checkout')->name('carrinho.finalizar')->middleware('auth');
-
-Route::get('/produtos/{idProduto}', 'ProdutosController@show');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/produtos/{idProduto}/atualizarImagem', 'ProdutosController@atualizarImagem');
