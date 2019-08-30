@@ -30,6 +30,8 @@
                     echo 'Pedido em Transporte';
                     } elseif ($pedido[0]->situacao == 'R') {
                     echo 'Pedido Reservado';
+                    } elseif ($pedido[0]->situacao == 'F') {
+                    echo 'Pedido Entregue';
                     };
                     @endphp</div>
             </div>
